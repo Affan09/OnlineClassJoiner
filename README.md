@@ -22,6 +22,7 @@ This **Web Edition** is a pure browser-native port of the desktop application. I
 - 🕰️ **Interactive Analog Time Picker**: Set start and end times effortlessly using an interactive visual clock face or slot presets.
 - 💾 **100% Client-Side Storage**: Courses, schedules, and custom settings persist securely in your browser's `localStorage`—no database or account required.
 - 📟 **Built-in Live Console**: Collapsible interactive terminal displaying timestamped events, status updates, and operation logs.
+- 📱 **Mobile & Phone Optimized**: Responsive touch-first UI with notch/safe-area support, mobile audio unlock, and adaptive controls for iOS Safari and Android Chrome.
 - 🌓 **Obsidian & Pure White Themes**: Seamlessly switch between dark mode (deep obsidian with crimson accents) and light mode (crisp slate-white).
 
 ---

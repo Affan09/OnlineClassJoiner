@@ -117,8 +117,19 @@ body {
   background-color: var(--bg-app);
   color: var(--text-primary);
   overflow-x: hidden;
-  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+input, textarea, select {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+button {
+  touch-action: manipulation;
 }
 
 /* Custom Sleek Scrollbars */
@@ -143,10 +154,13 @@ body {
 .app-shell {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100vw;
   background-color: var(--bg-app);
   color: var(--text-primary);
+  overflow-x: hidden;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -1803,7 +1817,9 @@ body {
   color: var(--text-muted);
 }
 
-/* ==================== RESPONSIVE WEB STYLES ==================== */
+/* ==================== RESPONSIVE WEB STYLES FOR TABLETS & PHONES ==================== */
+
+/* Tablet & Smaller Laptops (<= 960px) */
 @media (max-width: 960px) {
   .main-workspace {
     grid-template-columns: 1fr;
@@ -1815,7 +1831,7 @@ body {
   .iub-header {
     padding: 0 16px;
     height: auto;
-    min-height: 64px;
+    min-height: 60px;
     flex-wrap: wrap;
     gap: 10px;
     padding-top: 10px;
@@ -1825,7 +1841,7 @@ body {
   .live-console-panel {
     border-left: none;
     border-top: 1px solid var(--border-subtle);
-    min-height: 400px;
+    min-height: 380px;
   }
 
   .form-row-three {
@@ -1838,5 +1854,441 @@ body {
 
   .tp-clock-workspace {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .app-shell {
+    height: auto;
+    min-height: 100dvh;
+  }
+
+  .main-workspace {
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .dashboard-column {
+    padding: 16px 14px;
+    overflow-y: visible;
+    height: auto;
+    gap: 14px;
+  }
+
+  /* Compact Header on Mobile */
+  .iub-header {
+    padding: 8px 12px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    min-height: 54px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-identity {
+    gap: 8px;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .iub-crest-emblem {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .brand-titles h1 {
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-titles p {
+    display: none;
+  }
+
+  .header-right-controls {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  /* Compact Live Clock: Hide Date on Mobile */
+  .live-clock-pill {
+    padding: 5px 8px;
+    font-size: 11.5px;
+    gap: 5px;
+  }
+
+  .clock-day,
+  .clock-divider {
+    display: none;
+  }
+
+  .clock-time {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  /* Compact Icon Buttons in Header */
+  .btn-google-auth span,
+  .btn-header-terminal span,
+  .btn-header-theme span {
+    display: none;
+  }
+
+  .btn-google-auth,
+  .btn-header-terminal,
+  .btn-header-theme {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    padding: 0;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  .btn-header-settings {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Mobile Dashboard Toolbar */
+  .dashboard-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .section-heading {
+    font-size: 18px;
+  }
+
+  .section-subheading {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .dashboard-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .btn-add-class,
+  .btn-sync-classroom {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+
+  /* Safety Status Bar */
+  .feature-Guarantee-bar {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .guarantee-pill {
+    font-size: 11px;
+    padding: 5px 10px;
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Single Column Classes Grid */
+  .classes-grid,
+  .unconfigured-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .class-card {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .course-title {
+    font-size: 15px;
+  }
+
+  .course-schedule-meta {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .class-card-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .btn-scan-now {
+    flex: 1;
+    justify-content: center;
+    min-height: 38px;
+    font-size: 12.5px;
+    padding: 8px 12px;
+  }
+
+  .btn-set-schedule {
+    min-height: 38px;
+    font-size: 12.5px;
+    padding: 8px 12px;
+  }
+
+  .card-icon-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .btn-icon-only {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  /* Countdown Banner Stacking on Mobile */
+  .next-class-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .next-class-info {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .next-class-details h4 {
+    font-size: 13.5px;
+  }
+
+  .next-class-details p {
+    font-size: 11.5px;
+  }
+
+  .next-class-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--bg-card-subtle);
+    border: 1px solid var(--border-subtle);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* Modals on Phones */
+  .modal-backdrop {
+    padding: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    align-items: flex-end;
+  }
+
+  .modal-window {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 16px);
+    border-radius: 16px 16px 12px 12px;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-header h2 {
+    font-size: 15px;
+  }
+
+  .modal-body-form {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  /* Prevent iOS zoom on inputs with min 16px font */
+  .form-group input {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .btn-secondary,
+  .btn-primary-gold {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 14px;
+    padding: 11px 16px;
+  }
+
+  /* Time Picker on Mobile */
+  .time-picker-container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .tp-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .tp-quick-combos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+  }
+
+  .tp-combo-btn {
+    padding: 6px 2px;
+    font-size: 10.5px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .tp-days-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+
+  .tp-day-pill {
+    padding: 8px 0;
+    font-size: 11px;
+    min-width: 0;
+  }
+
+  .tp-presets-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .tp-preset-chip {
+    padding: 8px 6px;
+    font-size: 11px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tp-clock-workspace {
+    padding: 12px;
+    gap: 14px;
+  }
+
+  .tp-time-tabs {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .tp-time-tab {
+    padding: 8px 6px;
+  }
+
+  .tp-tab-label {
+    font-size: 9px;
+  }
+
+  .tp-tab-value {
+    font-size: 12px;
+  }
+
+  .tp-analog-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .tp-clock-svg {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    touch-action: manipulation;
+  }
+
+  .tp-clock-number-group {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tp-duration-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .tp-duration-btns button {
+    padding: 8px 4px;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  /* Mobile Live Console */
+  .live-console-panel {
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    min-height: auto;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .console-entries-list {
+    max-height: 240px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btn-floating-terminal {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    right: 12px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+
+/* Small Smart Phones (<= 440px) */
+@media (max-width: 440px) {
+  .live-clock-pill {
+    display: none;
+  }
+
+  .brand-titles h1 {
+    font-size: 13px;
+    max-width: 140px;
+  }
+
+  .dashboard-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .tp-presets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tp-clock-svg {
+    max-width: 200px;
   }
 }
